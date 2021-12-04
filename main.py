@@ -1,7 +1,6 @@
 import uvicorn
 from fastapi import FastAPI, File, UploadFile
 from starlette.responses import RedirectResponse
-from serve.serve_model import *
 import json
 import requests
 
@@ -35,7 +34,7 @@ async def predict_api(file: UploadFile = File(...)):
        result['data'][0]['doe']= 'Không có thông tin'       
     if (result['data'][0]['id']=="" or result['data'][0]['id']=="N/A"):
        result['data'][0]['id']= 'Không có thông tin'      
-    if (result['data'][0]['name'] or result['data'][0]['name']=="N/A"):
+    if (result['data'][0]['name'] == "" or result['data'][0]['name']=="N/A"):
        result['data'][0]['name']= 'Không có thông tin'       
     if (result['data'][0]['sex']=="" or result['data'][0]['sex']=="N/A"):
        result['data'][0]['sex']= 'Không có thông tin'          
